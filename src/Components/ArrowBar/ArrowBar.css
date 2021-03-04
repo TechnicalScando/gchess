@@ -1,0 +1,30 @@
+.arrowBarFlex {
+    display: flex;
+    width: 414px;
+    height: 71px;
+}
+
+.arrowBar {
+    background-color: #f05454;
+    border: black 1px solid;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    
+    box-sizing: border-box;
+}
+
+.arrowBar.left{
+    padding-left: 15px;
+    padding-right: 43px;
+}
+
+.arrowBar.right{
+    padding-left: 43px;
+    padding-right: 15px;
+}
+
+.arrowButton {
+    background-color: #f05454;
+    border: none;
+}

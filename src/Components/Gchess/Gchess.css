@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+@media screen and (max-width: 600px) {
+    .bodyDiv {
+    width: 414px;
+    height: 896px;
+    padding: 0px;
+    }
+
+    .flexContainer {
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+    }
+
+    .header {
+        text-align: center;
+        background-color: #222831;
+        width: 100%;
+        height: 101px;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .headerText {
+        color: #DDDDDD;
+    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 56px;
+    line-height: 76px;
+
+    padding: 10px;
+    margin: 0px;
+    }
+
+}
+
+.bodyDiv {
+    width: 1440px;
+    height: 1024;
+    padding: 0px;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+    height: 134px;
+    background-color: #222831;
+    
+}
+
+.headerText {
+    color: #DDDDDD;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 56px;
+    line-height: 76px;
+
+    padding: 22px;
+    margin: 0px;
+}
+
+
+

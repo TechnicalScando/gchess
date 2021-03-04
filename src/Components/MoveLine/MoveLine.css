@@ -1,0 +1,48 @@
+.moveLineFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 33px;
+}
+
+.moveNumber{
+    background-color: #30475e;
+    width: 60px;
+    border-top: .1pt solid #DDDDDD;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+
+    color: #DDDDDD;
+
+    display: flex;
+
+    box-sizing: border-box;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.move {
+    background-color: #DDDDDD;
+    width: 177px;
+
+    display: flex;
+    align-items: flex-end;
+
+    box-sizing: border-box;
+
+    padding-bottom: 0px;
+    padding-left: 7px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+}
+

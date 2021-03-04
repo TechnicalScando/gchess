@@ -1,8 +1,10 @@
 import './App.css'
 
+import Gchess from './Components/Gchess/Gchess'
+
 function App () {
   return (
-    <h1>Gchess!</h1>
+    <Gchess />
   )
 }
 

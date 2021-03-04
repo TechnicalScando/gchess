@@ -1,0 +1,13 @@
+@media screen and (max-width: 600px) {
+    .gameBoard {
+        width: 414px;
+        height: 414px;
+
+        background-color: gray;
+    }
+}
+
+.gameBoard {
+    width: 745px;
+    height: 745px;
+}

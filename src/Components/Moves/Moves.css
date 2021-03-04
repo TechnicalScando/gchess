@@ -1,0 +1,29 @@
+.movesFlex {
+    height: 171px;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.movesHeader {
+    width: 100% - 5px;
+    height: 39.5px;
+    background-color: #222831;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+
+    color: #dddddd;
+
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    
+
+    padding-left: 5px;
+    padding-bottom: 4px;
+}
