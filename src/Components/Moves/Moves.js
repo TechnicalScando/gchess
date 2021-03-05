@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { viewportContext } from '../../App'
 
 import './Moves.css'
 import MoveLine from '../MoveLine/MoveLine'
 
 const Moves = () => {
+  const width = useContext(viewportContext)
+  const breakpoint = 620
+
   const MobileMoves = () => (
     <div className='movesFlex'>
       <div className='movesHeader'> Moves </div>
@@ -37,7 +41,7 @@ const Moves = () => {
   )
 
   return (
-    <DesktopMoves />
+    width < breakpoint ? <MobileMoves /> : <DesktopMoves />
   )
 }
 

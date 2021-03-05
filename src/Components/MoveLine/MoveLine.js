@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { viewportContext } from '../../App'
 
 import './MoveLine.css'
 
 const MoveLine = () => {
+  const width = useContext(viewportContext)
+  const breakpoint = 620
+
   const MobileMoveLine = () => (
     <div className='moveLineFlex'>
       <div className='moveNumber'>
@@ -32,7 +36,7 @@ const MoveLine = () => {
   )
 
   return (
-    <DesktopMoveLine />
+    width < breakpoint ? <MobileMoveLine /> : <DesktopMoveLine />
   )
 }
 

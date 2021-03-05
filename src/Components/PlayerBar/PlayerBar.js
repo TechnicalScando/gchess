@@ -1,4 +1,5 @@
 import React from 'react'
+import { viewportContext } from '../../App'
 
 import './PlayerBar.css'
 

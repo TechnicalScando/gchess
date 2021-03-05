@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { viewportContext } from '../../App'
 
 import './Gchess.css'
 import PlayerBar from '../PlayerBar/PlayerBar'
@@ -7,6 +8,9 @@ import ArrowBar from '../ArrowBar/ArrowBar'
 import Moves from '../Moves/Moves'
 
 const Gchess = () => {
+  const width = useContext(viewportContext)
+  const breakpoint = 620
+
   const MobileGChess = () => (
     <div className='flexContainer'>
       <div className='bodyDiv'>
@@ -22,7 +26,7 @@ const Gchess = () => {
         <PlayerBar
           dynamicClass='playerBarFlex bottom'
           dynamicClassText='playerBarText'
-          dynamicTimerText='playerBartext'
+          dynamicTimerText='playerBarText'
         />
         <ArrowBar />
         <Moves />
@@ -58,7 +62,7 @@ const Gchess = () => {
   )
 
   return (
-    <DesktopGChess />
+    width < breakpoint ? <MobileGChess /> : <DesktopGChess />
   )
 }
 
