@@ -25,3 +25,36 @@
     align-items: flex-start;
 }
 
+.playerBarDesktop{
+    background-color: #30475e;
+    height: 110px;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.playerBarTextDesktop {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28.8402px;
+    line-height: 39px;
+
+    color: #DDDDDD;
+}
+
+.playerBarTimerTextDesktop {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 56.959px;
+    line-height: 78px;
+
+    color: #DDDDDD;
+}
+
