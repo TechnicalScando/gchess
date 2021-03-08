@@ -1,8 +1,12 @@
+/*for mobile devices */
+
 .playerBarFlex {
     background-color:#30475e ;
     height: 71px;
     width: 100%;
+    max-width: 768px;
     display: flex;
+    max-width: 760px;
 
    justify-content: space-between;
    align-items: flex-end;
@@ -25,5 +29,49 @@
     align-items: flex-start;
 }
 
+/* for larger phones */
+@media screen and (min-width: 600px) {
+    .playerBarText{
+        font-size: 26px;
+        margin-bottom: 25px;
+        margin-top: 25px;
+    }
+}
+
+/* for tablets */ 
+
+@media screen and (min-width: 768px){
+    .playerBarText {
+        font-size:24px;
+    }
+}
+
+/* for desktops */
+@media screen and (min-width: 992px){
+    .playerBarText {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 30px;
+        line-height: 25px;
+    
+        color: #DDDDDD;
+    
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .playerBarFlex {
+        background-color:#30475e ;
+        height: 10%;
+        width: 100%;
+        display: flex;
+
+    
+       justify-content: space-between;
+       align-items: flex-end;
+       flex-direction: row-reverse;
+    }
+}
 
 

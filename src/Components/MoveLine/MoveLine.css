@@ -1,3 +1,5 @@
+/* Extra small devices (600 px and down, phones) */
+
 .moveLineFlex {
     display: flex;
     flex-direction: row;
@@ -8,7 +10,7 @@
 
 .moveNumber{
     background-color: #30475e;
-    width: 60px;
+    width: 10%;
     border-top: .1pt solid #DDDDDD;
 
     font-family: Open Sans;
@@ -29,7 +31,7 @@
 
 .move {
     background-color: #DDDDDD;
-    width: 177px;
+    width: 45%;
 
     display: flex;
     align-items: flex-end;
@@ -46,3 +48,11 @@
     line-height: 25px;
 }
 
+/* Small devices (tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+    .moveLineFlex {
+        height: 45px;
+    }
+
+    
+}

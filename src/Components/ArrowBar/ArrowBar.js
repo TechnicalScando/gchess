@@ -11,12 +11,20 @@ const ArrowBar = () => {
   return (
     <div className='arrowBarFlex'>
       <div className='arrowBar left'>
-        <button className='arrowButton'><BackArrow /></button>
-        <button className='arrowButton'><BegginingArrow /></button>
+        <button className='arrowButton'>
+          <BackArrow className='arrows' />
+        </button>
+        <button className='arrowButton'>
+          <BegginingArrow className='arrows' />
+        </button>
       </div>
       <div className='arrowBar right'>
-        <button className='arrowButton'><EndArrow /></button>
-        <button className='arrowButton'><ForwardArrow /></button>
+        <button className='arrowButton'>
+          <EndArrow className='arrows' />
+        </button>
+        <button className='arrowButton'>
+          <ForwardArrow className='arrows' />
+        </button>
       </div>
     </div>
   )

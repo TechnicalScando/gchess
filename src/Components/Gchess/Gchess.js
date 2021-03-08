@@ -13,22 +13,7 @@ const Gchess = () => {
   //       <div className='headerDesktop'>
   //         <h1 className='headerTextDesktop'>gChess</h1>
   //       </div>
-  //       <div className='playAreaFlexDesktop'>
-  //         <GameBoard />
-  //         <div className='infoBarDesktop'>
-  //           <PlayerBar
-  //             dynamicClass='playerBarDesktop'
-  //             dynamicClassText='playerBarTextDesktop'
-  //             dynamicTimerText='playerBarTimerTextDesktop'
-  //           />
-  //           <Moves />
-  //           <ArrowBar />
-  //           <PlayerBar
-  //             dynamicClass='playerBarDesktop'
-  //             dynamicClassText='playerBarTextDesktop'
-  //             dynamicTimerText='playerBarTimerTextDesktop'
-  //           />
-  //         </div>
+
   //       </div>
   //     </div>
   //   </div>
@@ -40,19 +25,40 @@ const Gchess = () => {
         <div className='header'>
           <h1 className='headerText'>gChess</h1>
         </div>
-        <PlayerBar
-          dynamicClass='playerBarFlex top'
-          dynamicClassText='playerBarText'
-          dynamicTimerText='playerBarText'
-        />
-        <GameBoard />
-        <PlayerBar
-          dynamicClass='playerBarFlex bottom'
-          dynamicClassText='playerBarText'
-          dynamicTimerText='playerBarText'
-        />
-        <ArrowBar />
-        <Moves />
+        {/* mobile layout */}
+        <div className='mobileLayout'>
+          <PlayerBar
+            dynamicClass='playerBarFlex top'
+            dynamicClassText='playerBarText'
+            dynamicTimerText='playerBarText'
+          />
+          <GameBoard />
+          <PlayerBar
+            dynamicClass='playerBarFlex bottom'
+            dynamicClassText='playerBarText'
+            dynamicTimerText='playerBarText'
+          />
+          <ArrowBar />
+          <Moves />
+        </div>
+        {/* Desktop layout */}
+        <div className='desktopLayout'>
+          <GameBoard />
+          <div className='infoBar'>
+            <PlayerBar
+              dynamicClass='playerBarFlex top'
+              dynamicClassText='playerBarText'
+              dynamicTimerText='playerBarText'
+            />
+            <Moves />
+            <ArrowBar />
+            <PlayerBar
+              dynamicClass='playerBarFlex bottom'
+              dynamicClassText='playerBarText'
+              dynamicTimerText='playerBarText'
+            />
+          </div>
+        </div>
       </div>
     </div>
   )

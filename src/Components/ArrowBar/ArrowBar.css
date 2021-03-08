@@ -1,18 +1,23 @@
+
+/* for phones and other small devices */
 .arrowBarFlex {
     display: flex;
     width: 100%;
+    max-width: 760px;
     height: 71px;
 }
 
 .arrowBar {
     background-color: #f05454;
     width: 50%;
+    
     display: flex;
     justify-content: space-between;
     
     box-sizing: border-box;
 
     border: black 1px solid;
+    padding: 1px;
 }
 
 .arrowBar.left{
@@ -30,4 +35,20 @@
 .arrowButton {
     background-color: #f05454;
     border: none;
+   
+}
+
+.arrows {
+    margin: 1px;
+}
+
+
+
+/* for desktops and large devices */
+
+@media screen and (min-width: 920px){
+    .arrowBarFlex{
+        height: 10%;
+        width: 100%;
+    }
 }

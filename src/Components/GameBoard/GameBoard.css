@@ -1,8 +1,17 @@
-    .gameBoard {
-        width: 414px;
-        height: 414px;
-
-        background-color: gray;
+   
+   /* smaller than 992 px */
+   .boardImage {
+      width:100%;
+      display: block;
+      max-width: 760px;
     }
+
+    /* for desktops (992 px and up */
+    @media screen and (min-width:992px) {
+        .boardImage {
+            width: 760px;
+        }
+    }
+
 
     
