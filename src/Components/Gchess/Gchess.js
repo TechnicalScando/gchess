@@ -20,8 +20,8 @@ const Gchess = () => {
   // )
 
   return (
-    <div className='flexContainer'>
-      <div className='bodyDiv'>
+    <div className='bodyDiv'>
+      <div className='flexContainer'>
         <div className='header'>
           <h1 className='headerText'>gChess</h1>
         </div>

@@ -1,75 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
-/* Extra small devices (600 px and down */
+   .flexContainer {
+       width: 414px;
+       justify-content: center;
+       margin: 0px;
+   }
 
-.desktopLayout {
-    display: none;
-}
+   .header {
+       background-color: #222831;
+       text-align: center;
+       box-sizing: border-box;
 
-.bodyDiv {
-    width: 100%;
-    min-width: 300px;
-    max-height: 896px;
-    padding: 0px;
-}
+      
+   }
 
-.flexContainer {
-    display: flex;
-    justify-content: center;
-    padding: 0px;
-}
-
-.header {
-    text-align: center;
-    background-color: #222831;
-    width: 100%;
-    max-width: 760px;
-    height: 101px;
-    margin: 0;
-    padding: 0;
-
-}
-
-.headerText {
-    color: #DDDDDD;
-
+   .headerText {
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 56px;
     line-height: 76px;
 
-    padding: 10px;
+    color: #DDDDDD;
+    
+
     margin: 0px;
-}
+    padding: 10px;
+   }
 
+   .desktopLayout {
+       display: none;
+   }
 
-@media screen and (min-width: 768px){
-    .headerText {
-        font-size: 65px;
+   .bodyDiv {
+       width: 100%;
+       height: 100%;
+       display: flex;
+       justify-content: center;
+       background-color: black;
+   }
+
+@media screen and (min-width: 600px)  {
+    .flexContainer {
+        width: 600px;
+    }
+} 
+@media screen and (min-width: 768px)  {
+    .flexContainer {
+        width: 768px;
     }
     
-}
-
-@media screen and (min-width: 992px){
+} 
+@media screen and (min-width: 992px)  {
+   
+    
+} 
+@media screen and (min-width: 1200px)  {
     .mobileLayout {
         display: none;
     }
-
     .desktopLayout {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
     }
-
-    .infoBar {
-        max-height: 760px;
-        width: 530px;
-    }
-
-    .header {
+    .flexContainer {
         width: 100%;
-        max-width: 100%;
     }
-}
+    .infoBar {
+        width: 350px;
+        height: 100%;
+    }
+} 

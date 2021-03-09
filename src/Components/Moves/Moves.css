@@ -1,9 +1,7 @@
 /* for phones and smalle devices */
 
 .movesFlex {
-    height: 171px;
     width: 100%;
-    max-width:760px;
     background-color: gray;
     display: flex;
     flex-direction: column;
@@ -33,10 +31,8 @@
 
 /* For desktops and larger */
 
-@media screen and (min-width: 920px) {
+@media screen and (min-width: 1200px)  {
     .movesFlex {
-        height: 70%;
-        width: 100%;
+        height: 540px;
     }
 }
-
