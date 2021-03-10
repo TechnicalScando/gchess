@@ -1,34 +1,18 @@
    
 
-@media screen and (max-width: 600px)  {
+
     .gameBoard {
-        width: 414px;
-        height: 414px;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
     }
-} 
-@media screen and (min-width: 600px)  {
-    .gameBoard {
-        width: 600px;
-        height: 600px;
-    }
-} 
-@media screen and (min-width: 768px)  {
-    .gameBoard {
-        width: 768px;
-        height: 768px;
-    }
-} 
-@media screen and (min-width: 992px)  {
+
+    
+
+
    
-} 
-@media screen and (min-width: 1200px)  {
-    .gameBoard {
-        width: 811px;
-        height: 811px;
-    }
-} 
+
 
    
 

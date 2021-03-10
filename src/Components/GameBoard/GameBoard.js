@@ -2,25 +2,30 @@ import React from 'react'
 
 import './GameBoard.css'
 
-import BoardRow from '../BoardRow/BoardRow'
+import Square from '../Square/Square'
 
 const GameBoard = () => {
   const gameBoard = []
+  let key = ''
+  let color = 'dark'
 
   const generateBoard = () => {
-    let startingColor = 'dark'
-    for (let i = 0; i <= 7; i++) {
-      console.log(startingColor)
-      gameBoard.push(<BoardRow key={`Row: ${i}`} startColor={startingColor} />)
-      if (startingColor === 'dark') {
-        startingColor = 'light'
-      } else {
-        startingColor = 'dark'
+    for (let x = 0; x < 7; x++) {
+      for (let y = 0; y < 7; y++) {
+        key = `x: ${x} y: ${y}`
+        gameBoard.push(
+          <Square
+            key={key}
+            keyContent={key}
+            className={`square ${color}`}
+          />)
+        color === 'dark' ? color = 'light' : color = 'dark'
       }
     }
   }
 
   generateBoard()
+  console.log(gameBoard)
   return (
     <div className='gameBoard'>
       {gameBoard.map(row => {

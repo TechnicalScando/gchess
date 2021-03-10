@@ -2,7 +2,7 @@
 
 
    .flexContainer {
-       width: 414px;
+       width: 100%;
        justify-content: center;
        margin: 0px;
    }
@@ -41,34 +41,26 @@
        background-color: black;
    }
 
-@media screen and (min-width: 600px)  {
-    .flexContainer {
-        width: 600px;
-    }
-} 
-@media screen and (min-width: 768px)  {
-    .flexContainer {
-        width: 768px;
-    }
-    
-} 
-@media screen and (min-width: 992px)  {
-   
-    
-} 
+
+
 @media screen and (min-width: 1200px)  {
     .mobileLayout {
         display: none;
     }
+
     .desktopLayout {
         display: flex;
-        justify-content: space-between;
+        
     }
+
     .flexContainer {
         width: 100%;
     }
-    .infoBar {
-        width: 350px;
-        height: 100%;
+
+    .infobar {
+        width: 100%;
     }
+
+
+    
 } 

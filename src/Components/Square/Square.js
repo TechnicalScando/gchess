@@ -2,10 +2,10 @@ import React from 'react'
 
 import './Square.css'
 
-const Square = (color) => {
+const Square = ({ className, keyContent }) => {
   return (
 
-    <div className={color.color} />
+    <div className={className} />
 
   )
 }

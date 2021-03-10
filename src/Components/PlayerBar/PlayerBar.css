@@ -2,7 +2,7 @@
 
 .playerBarFlex {
     background-color:#30475e ;
-    height: 71px;
+    height: 10%;
     width: 100%;
     display: flex;
    
@@ -28,11 +28,6 @@
     align-items: flex-start;
 }
 
-@media screen and (min-width: 1200px)  {
-    .playerBarFlex {
-        height: 100px;
-        
-    }
-}
+
 
 
