@@ -1,0 +1,31 @@
+.arrowBarFlex {
+    display: flex;
+    justify-content: space-evenly;
+
+    background-color: #f05454;
+
+    
+    
+}
+
+.arrowBar{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+
+    border: 1px solid black;
+
+    box-sizing: border-box;
+}
+
+.arrowButton {
+    background-color: #f05454;
+    border: 0px;
+    padding: 5px;
+
+    margin: 1px;
+}
+
+.arrows {
+    height: 75%;
+}

@@ -1,0 +1,27 @@
+.playerBarFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: #30475e;
+
+    padding-top: 10px;
+
+    box-sizing: border-box;
+
+    flex-basis: 10%;
+}
+
+.playerBarText {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 4vw;
+    line-height: 25px;
+    
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    color: #DDDDDD;
+}
