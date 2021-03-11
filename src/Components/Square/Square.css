@@ -12,7 +12,8 @@
     border: solid 1px #4f5e70;
     overflow: hidden;
     position: relative;
-    flex-basis: 12.5%;
+    flex-basis: 11.11%;
+    flex-grow: 1;
 }
 
 

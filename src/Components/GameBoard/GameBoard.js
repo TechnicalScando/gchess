@@ -10,8 +10,8 @@ const GameBoard = () => {
   let color = 'dark'
 
   const generateBoard = () => {
-    for (let x = 0; x < 7; x++) {
-      for (let y = 0; y < 7; y++) {
+    for (let x = 0; x < 8; x++) {
+      for (let y = 0; y < 8; y++) {
         key = `x: ${x} y: ${y}`
         gameBoard.push(
           <Square
@@ -21,6 +21,7 @@ const GameBoard = () => {
           />)
         color === 'dark' ? color = 'light' : color = 'dark'
       }
+      color === 'dark' ? color = 'light' : color = 'dark'
     }
   }
 
