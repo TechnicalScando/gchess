@@ -20,47 +20,47 @@ const Gchess = () => {
   // )
 
   return (
-    <div className='bodyDiv'>
-      <div className='flexContainer'>
-        <div className='header'>
-          <h1 className='headerText'>gChess</h1>
-        </div>
-        {/* mobile layout */}
-        <div className='mobileLayout'>
+    // <div className='bodyDiv'>
+    <div className='flexContainer'>
+      <div className='header'>
+        <h1 className='headerText'>gChess</h1>
+      </div>
+      {/* mobile layout */}
+      <div className='mobileLayout'>
+        <PlayerBar
+          dynamicClass='playerBarFlex top'
+          dynamicClassText='playerBarText'
+          dynamicTimerText='playerBarText'
+        />
+        <GameBoard />
+        <PlayerBar
+          dynamicClass='playerBarFlex bottom'
+          dynamicClassText='playerBarText'
+          dynamicTimerText='playerBarText'
+        />
+        <ArrowBar />
+        <Moves />
+      </div>
+      {/* Desktop layout */}
+      <div className='desktopLayout'>
+        <GameBoard />
+        <div className='infoBar'>
           <PlayerBar
             dynamicClass='playerBarFlex top'
             dynamicClassText='playerBarText'
             dynamicTimerText='playerBarText'
           />
-          <GameBoard />
+          <Moves />
+          <ArrowBar />
           <PlayerBar
             dynamicClass='playerBarFlex bottom'
             dynamicClassText='playerBarText'
             dynamicTimerText='playerBarText'
           />
-          <ArrowBar />
-          <Moves />
-        </div>
-        {/* Desktop layout */}
-        <div className='desktopLayout'>
-          <GameBoard />
-          <div className='infoBar'>
-            <PlayerBar
-              dynamicClass='playerBarFlex top'
-              dynamicClassText='playerBarText'
-              dynamicTimerText='playerBarText'
-            />
-            <Moves />
-            <ArrowBar />
-            <PlayerBar
-              dynamicClass='playerBarFlex bottom'
-              dynamicClassText='playerBarText'
-              dynamicTimerText='playerBarText'
-            />
-          </div>
         </div>
       </div>
     </div>
+    // </div>
   )
 }
 
