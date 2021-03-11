@@ -32,4 +32,14 @@
         .mobileLayout{
             display: none;
         }
+
+        .desktopLayout{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .infoBar{
+            height: 700px;
+            width: 50%;
+        }
    }

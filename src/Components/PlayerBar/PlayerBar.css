@@ -25,3 +25,14 @@
 
     color: #DDDDDD;
 }
+
+@media screen and (min-width:1200px) {
+    .playerBarText {
+        font-size: 32px;
+    }
+
+    .playerBarFlex {
+        flex-direction: row-reverse;
+        padding: 5px;
+    }
+}

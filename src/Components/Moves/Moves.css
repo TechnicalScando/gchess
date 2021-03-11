@@ -10,3 +10,16 @@
     padding: 2vw;
     color: #DDDDDD;
 }
+
+@media screen and (min-width:1200px) {
+    .movesFlex {
+        height: 81%;
+        background-color: #DDDDDD;
+    }
+
+    .movesHeader {
+        font-size: 20px;
+        padding: 5px;
+    }
+    
+}
