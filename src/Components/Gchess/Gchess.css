@@ -35,11 +35,16 @@
 
         .desktopLayout{
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         .infoBar{
             height: 700px;
             width: 50%;
+            max-width: 550px;
+            margin-left: 30px;
         }
+
+        
    }

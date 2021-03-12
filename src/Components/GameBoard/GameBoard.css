@@ -10,8 +10,8 @@
 
     @media screen and (min-width:1200px) {
         .gameBoard{
-            height: 811px;
-            width: 811px;
+            max-height: 1000px;
+            max-width: 1000px;
         }
         
     }
