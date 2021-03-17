@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './GameBoard.css'
 
 import Square from '../Square/Square'
 import Piece from '../Piece/Piece'
+
+import { ItemTypes } from '../../Constants'
 
 const GameBoard = () => {
   const [piecePosition, setPiecePosition] = useState({
@@ -14,10 +16,18 @@ const GameBoard = () => {
   let key = ''
   let color = 'dark'
 
+  useEffect(() => {
+    console.log(piecePosition)
+  }, [piecePosition])
+
   const canMovePawn = (newX, newY) => {
     if (newY === (piecePosition.y - 1) && newX === piecePosition.x) {
+      console.log(`Pawn can move! Original position: ${piecePosition.x},${piecePosition.y} `)
+      console.log(`New position: ${newX},${newY} `)
       return true
     } else {
+      console.log(`Pawn cannot move! Original position: ${piecePosition.x},${piecePosition.y} `)
+      console.log(`New position: ${newX},${newY} `)
       return false
     }
   }
@@ -46,6 +56,7 @@ const GameBoard = () => {
               className={`square ${color}`}
               piece={<Piece />}
               handleClick={handleSquareClick}
+              movePawn={movePawn}
             />
 
           )
@@ -58,6 +69,7 @@ const GameBoard = () => {
               keyContent={key}
               className={`square ${color}`}
               handleClick={handleSquareClick}
+              movePawn={movePawn}
             />
 
           )
