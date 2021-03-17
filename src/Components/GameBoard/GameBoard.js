@@ -9,7 +9,7 @@ import { ItemTypes } from '../../Constants'
 import { render } from 'react-dom'
 
 const GameBoard = () => {
-  const pieces = [
+  const [pieces, setPieces] = useState([
     {
       type: 'Pawn',
       position: { x: 4, y: 6 }
@@ -19,6 +19,7 @@ const GameBoard = () => {
       position: { x: 6, y: 7 }
     }
   ]
+  )
 
   const [selectedPiece, setSelectedPiece] = useState({})
 
@@ -26,21 +27,41 @@ const GameBoard = () => {
   const key = ''
   const color = 'dark'
 
-  // const canMovePawn = (newX, newY) => {
-  //   if (newY === (piecePosition.y - 1) && newX === piecePosition.x) {
-  //     return true
-  //   } else {
-  //     return false
-  //   }
-  // }
+  const canMovePawn = (newX, newY) => {
+    if (newY === (selectedPiece.position.y - 1) &&
+    newX === selectedPiece.position.x) {
+      return true
+    } else {
+      return false
+    }
+  }
 
-  // const canMoveKnight = (newX, newY) => {
+  const canMoveKnight = (newX, newY) => {
+    const pieceX = selectedPiece.position.x
+    const pieceY = selectedPiece.position.y
 
-  // }
+    if ((Math.abs(newX - pieceX) === 2 && Math.abs(newY - pieceY) === 1) ||
+    (Math.abs(newX - pieceX) === 1 && Math.abs(newY - pieceY) === 2)) {
+      return true
+    } else {
+      return false
+    }
+  }
 
-  // const movePawn = (newX, newY) => {
-  //   setPiecePosition({ x: newX, y: newY })
-  // }
+  const movePiece = (newX, newY, pieceToMove) => {
+    setPieces(
+      pieces.map(piece => {
+        if (piece === pieceToMove) {
+          return Object.assign({}, piece, {
+            type: pieceToMove.type,
+            position: { x: newX, y: newY }
+          })
+        } else {
+          return piece
+        }
+      })
+    )
+  }
 
   useEffect(() => {
     console.log(selectedPiece)
@@ -50,15 +71,24 @@ const GameBoard = () => {
     if (piece) {
       setSelectedPiece(piece)
     }
-    // if (type === 'Pawn') {
-    //   if (canMovePawn(newX, newY)) {
-    //     movePawn(newX, newY)
-    //   }
-    // } else if (type === 'Knight') {
-    //   if (canMoveKnight(newX, newY)) {
-    //     moveKnight(newX, newY)
-    //   }
-    // }
+
+    if (!piece && selectedPiece) {
+      pieces.forEach(piece => {
+        if (piece.position.x === selectedPiece.position.x &&
+          piece.type === selectedPiece.type &&
+          piece.position.y === selectedPiece.position.y) {
+          if (selectedPiece.type === 'Pawn') {
+            if (canMovePawn(newX, newY)) {
+              movePiece(newX, newY, piece)
+            }
+          } else if (selectedPiece.type === 'Knight') {
+            if (canMoveKnight(newX, newY)) {
+              movePiece(newX, newY, piece)
+            }
+          }
+        }
+      })
+    }
   }
 
   const renderSquare = (i) => {
