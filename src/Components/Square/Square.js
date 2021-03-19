@@ -1,18 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDrop } from 'react-dnd'
 
 import './Square.css'
 import { ItemTypes } from '../../Constants'
 
-const Square = ({ className, piece, x, y, handleClick }) => {
-  // const [{ isOver }, drop] = useDrop(() => ({
-  //   accept: ItemTypes.PAWN,
-  //   drop: () => movePawn(x, y),
-  //   collect: monitor => ({
-  //     isOver: !!monitor.isOver()
-  //   })
-  // }), [x, y])
-
+const Square = ({ className, piece, x, y, handleClick, handleDrop }) => {
   return (
 
     <div

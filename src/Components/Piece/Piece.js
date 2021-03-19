@@ -7,14 +7,7 @@ import { ReactComponent as Knight } from '../../Images/knightWhite.svg'
 import { ItemTypes } from '../../Constants'
 import { useDrag } from 'react-dnd'
 
-const Piece = (type) => {
-  // const [{ isDragging }, drag] = useDrag(() => ({
-  //   type: ItemTypes.PAWN,
-  //   collect: monitor => ({
-  //     isDragging: !!monitor.isDragging()
-  //   })
-  // }))
-
+const Piece = (type, position) => {
   let piece
   const pieceType = type.type
 

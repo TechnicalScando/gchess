@@ -1,3 +1,4 @@
 export const ItemTypes = {
-  PAWN: 'pawn'
+  PIECE: 'piece'
+
 }

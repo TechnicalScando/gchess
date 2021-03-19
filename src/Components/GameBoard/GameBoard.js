@@ -5,40 +5,41 @@ import './GameBoard.css'
 import Square from '../Square/Square'
 import Piece from '../Piece/Piece'
 
-import { ItemTypes } from '../../Constants'
-import { render } from 'react-dom'
-
 const GameBoard = () => {
   const [pieces, setPieces] = useState([
     {
       type: 'Pawn',
-      position: { x: 4, y: 6 }
+      color: 'white',
+      position: { x: 4, y: 6 },
+      id: 'Pawnwhitex:4y:6'
+
     },
     {
       type: 'Knight',
-      position: { x: 6, y: 7 }
+      color: 'white',
+      position: { x: 6, y: 7 },
+      id: 'Knightwhitex:6y:7'
     }
   ]
   )
 
-  const [selectedPiece, setSelectedPiece] = useState({})
-
   const gameBoard = []
-  const key = ''
-  const color = 'dark'
+  let selectedPiece
 
-  const canMovePawn = (newX, newY) => {
-    if (newY === (selectedPiece.position.y - 1) &&
-    newX === selectedPiece.position.x) {
+  const canMovePawn = (newX, newY, piece) => {
+    console.log(`Can move pawn? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
+    if (newY === (piece.position.y - 1) &&
+    newX === piece.position.x) {
       return true
     } else {
       return false
     }
   }
 
-  const canMoveKnight = (newX, newY) => {
-    const pieceX = selectedPiece.position.x
-    const pieceY = selectedPiece.position.y
+  const canMoveKnight = (newX, newY, piece) => {
+    console.log(`Can move Knight? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
+    const pieceX = piece.position.x
+    const pieceY = piece.position.y
 
     if ((Math.abs(newX - pieceX) === 2 && Math.abs(newY - pieceY) === 1) ||
     (Math.abs(newX - pieceX) === 1 && Math.abs(newY - pieceY) === 2)) {
@@ -48,12 +49,66 @@ const GameBoard = () => {
     }
   }
 
-  const movePiece = (newX, newY, pieceToMove) => {
+  const canMoveBishop = (newX, newY, piece) => {
+    console.log(`Can move bishop? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
+  }
+
+  const canMoveRook = (newX, newY, piece) => {
+    console.log(`Can move Rook? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
+  }
+
+  const canMoveKing = (newX, newY, piece) => {
+    console.log(`Can move King? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
+  }
+
+  const canMoveQueen = (newX, newY, piece) => {
+    console.log(`Can move Queen? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
+  }
+
+  const selectCanMove = ({ type }) => {
+    let returnFunc
+
+    switch (type) {
+      case 'Pawn':
+        returnFunc = canMovePawn
+        break
+      case 'Knight':
+        returnFunc = canMoveKnight
+        break
+      case 'Bishop':
+        returnFunc = canMoveBishop
+        break
+      case 'Rook':
+        returnFunc = canMoveRook
+        break
+      case 'King':
+        returnFunc = canMoveKing
+        break
+      case 'Queen':
+        returnFunc = canMoveQueen
+        break
+      default:
+        break
+    }
+
+    return returnFunc
+  }
+
+  const movePiece = (newX, newY, piece) => {
+    const canMove = selectCanMove(piece)
+    if (canMove(newX, newY, piece)) {
+      console.log('Attempting to change position')
+      changePiecePosition(newX, newY, piece)
+    } else {
+      console.log('this is false')
+    }
+  }
+
+  const changePiecePosition = (newX, newY, pieceToChange) => {
     setPieces(
       pieces.map(piece => {
-        if (piece === pieceToMove) {
+        if (piece.id === pieceToChange.id) {
           return Object.assign({}, piece, {
-            type: pieceToMove.type,
             position: { x: newX, y: newY }
           })
         } else {
@@ -63,31 +118,13 @@ const GameBoard = () => {
     )
   }
 
-  useEffect(() => {
-    console.log(selectedPiece)
-  }, [selectedPiece])
-
   const handleSquareClick = (newX, newY, piece) => {
     if (piece) {
-      setSelectedPiece(piece)
+      selectedPiece = piece
     }
 
     if (!piece && selectedPiece) {
-      pieces.forEach(piece => {
-        if (piece.position.x === selectedPiece.position.x &&
-          piece.type === selectedPiece.type &&
-          piece.position.y === selectedPiece.position.y) {
-          if (selectedPiece.type === 'Pawn') {
-            if (canMovePawn(newX, newY)) {
-              movePiece(newX, newY, piece)
-            }
-          } else if (selectedPiece.type === 'Knight') {
-            if (canMoveKnight(newX, newY)) {
-              movePiece(newX, newY, piece)
-            }
-          }
-        }
-      })
+      movePiece(newX, newY, selectedPiece)
     }
   }
 
@@ -103,7 +140,11 @@ const GameBoard = () => {
 
     pieces.forEach(piece => {
       if (piece.position.x === x && piece.position.y === y) {
-        matchedPiece = <Piece type={piece.type} position={piece.position} />
+        matchedPiece =
+          <Piece
+            type={piece.type}
+            position={piece.position}
+          />
       }
     })
 
@@ -115,7 +156,6 @@ const GameBoard = () => {
         className={`square ${color}`}
         piece={matchedPiece}
         handleClick={handleSquareClick}
-        // movePawn={movePawn}
       />
 
     )
