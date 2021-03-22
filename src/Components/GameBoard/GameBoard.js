@@ -26,8 +26,11 @@ const GameBoard = () => {
   const gameBoard = []
   let selectedPiece
 
+  useEffect(() => {
+    // console.log(pieces)
+  }, [pieces])
+
   const canMovePawn = (newX, newY, piece) => {
-    console.log(`Can move pawn? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
     if (newY === (piece.position.y - 1) &&
     newX === piece.position.x) {
       return true
@@ -37,7 +40,6 @@ const GameBoard = () => {
   }
 
   const canMoveKnight = (newX, newY, piece) => {
-    console.log(`Can move Knight? type:${piece.type} color:${piece.color} position:${piece.position.x},${piece.position.y} id:${piece.id}`)
     const pieceX = piece.position.x
     const pieceY = piece.position.y
 
@@ -94,13 +96,10 @@ const GameBoard = () => {
     return returnFunc
   }
 
-  const movePiece = (newX, newY, piece) => {
+  const movePiece = (newX, newY, { piece }) => {
     const canMove = selectCanMove(piece)
     if (canMove(newX, newY, piece)) {
-      console.log('Attempting to change position')
       changePiecePosition(newX, newY, piece)
-    } else {
-      console.log('this is false')
     }
   }
 
@@ -109,7 +108,8 @@ const GameBoard = () => {
       pieces.map(piece => {
         if (piece.id === pieceToChange.id) {
           return Object.assign({}, piece, {
-            position: { x: newX, y: newY }
+            position: { x: newX, y: newY },
+            id: `${piece.type}${piece.color}x:${newX}y:${newY}`
           })
         } else {
           return piece
@@ -125,6 +125,21 @@ const GameBoard = () => {
 
     if (!piece && selectedPiece) {
       movePiece(newX, newY, selectedPiece)
+      console.log(newX, newY, selectedPiece)
+    }
+  }
+
+  const handleDrop = (id, x, y) => {
+    let pieceToMove
+
+    pieces.forEach(piece => {
+      if (piece.id === id) {
+        pieceToMove = piece
+      }
+    })
+    if (pieceToMove) {
+      changePiecePosition(x, y, pieceToMove)
+      console.log(x, y, pieceToMove)
     }
   }
 
@@ -142,8 +157,7 @@ const GameBoard = () => {
       if (piece.position.x === x && piece.position.y === y) {
         matchedPiece =
           <Piece
-            type={piece.type}
-            position={piece.position}
+            piece={piece}
           />
       }
     })
@@ -156,6 +170,7 @@ const GameBoard = () => {
         className={`square ${color}`}
         piece={matchedPiece}
         handleClick={handleSquareClick}
+        handleDrop={handleDrop}
       />
 
     )

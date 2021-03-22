@@ -7,24 +7,27 @@ import { ReactComponent as Knight } from '../../Images/knightWhite.svg'
 import { ItemTypes } from '../../Constants'
 import { useDrag } from 'react-dnd'
 
-const Piece = (type, position) => {
-  let piece
-  const pieceType = type.type
+const Piece = ({ piece }) => {
+  const [, drag] = useDrag(() => ({
 
-  if (pieceType === 'Pawn') {
-    piece = <Pawn className='piece' />
-  } else if (pieceType === 'Knight') {
-    piece = <Knight className='piece' />
+    type: ItemTypes.PIECE,
+    item: { id: piece.id }
+
+  }))
+
+  let renderedPiece
+
+  if (piece.type === 'Pawn') {
+    renderedPiece = <Pawn className='piece' />
+  } else if (piece.type === 'Knight') {
+    renderedPiece = <Knight className='piece' />
   }
   return (
     <div
-      // ref={drag}
-      // style={{
-      //   opacity: isDragging ? 0.5 : 1
-      // }}
+      ref={drag}
       className='dragDiv'
     >
-      {piece}
+      {renderedPiece}
     </div>
   )
 }
