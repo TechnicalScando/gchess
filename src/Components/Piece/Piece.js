@@ -11,7 +11,7 @@ const Piece = ({ piece }) => {
   const [, drag] = useDrag(() => ({
 
     type: ItemTypes.PIECE,
-    item: { id: piece.id }
+    item: { piece: piece }
 
   }))
 

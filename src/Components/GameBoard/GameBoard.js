@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { changePiece } from '../../Redux/boardSlice'
 
 import './GameBoard.css'
 
@@ -6,29 +8,11 @@ import Square from '../Square/Square'
 import Piece from '../Piece/Piece'
 
 const GameBoard = () => {
-  const [pieces, setPieces] = useState([
-    {
-      type: 'Pawn',
-      color: 'white',
-      position: { x: 4, y: 6 },
-      id: 'Pawnwhitex:4y:6'
-
-    },
-    {
-      type: 'Knight',
-      color: 'white',
-      position: { x: 6, y: 7 },
-      id: 'Knightwhitex:6y:7'
-    }
-  ]
-  )
+  const reduxPieces = useSelector(state => state.board.pieces)
+  const dispatch = useDispatch()
 
   const gameBoard = []
   let selectedPiece
-
-  useEffect(() => {
-    // console.log(pieces)
-  }, [pieces])
 
   const canMovePawn = (newX, newY, piece) => {
     if (newY === (piece.position.y - 1) &&
@@ -69,28 +53,29 @@ const GameBoard = () => {
 
   const selectCanMove = ({ type }) => {
     let returnFunc
-
-    switch (type) {
-      case 'Pawn':
-        returnFunc = canMovePawn
-        break
-      case 'Knight':
-        returnFunc = canMoveKnight
-        break
-      case 'Bishop':
-        returnFunc = canMoveBishop
-        break
-      case 'Rook':
-        returnFunc = canMoveRook
-        break
-      case 'King':
-        returnFunc = canMoveKing
-        break
-      case 'Queen':
-        returnFunc = canMoveQueen
-        break
-      default:
-        break
+    if (type) {
+      switch (type) {
+        case 'Pawn':
+          returnFunc = canMovePawn
+          break
+        case 'Knight':
+          returnFunc = canMoveKnight
+          break
+        case 'Bishop':
+          returnFunc = canMoveBishop
+          break
+        case 'Rook':
+          returnFunc = canMoveRook
+          break
+        case 'King':
+          returnFunc = canMoveKing
+          break
+        case 'Queen':
+          returnFunc = canMoveQueen
+          break
+        default:
+          break
+      }
     }
 
     return returnFunc
@@ -104,18 +89,12 @@ const GameBoard = () => {
   }
 
   const changePiecePosition = (newX, newY, pieceToChange) => {
-    setPieces(
-      pieces.map(piece => {
-        if (piece.id === pieceToChange.id) {
-          return Object.assign({}, piece, {
-            position: { x: newX, y: newY },
-            id: `${piece.type}${piece.color}x:${newX}y:${newY}`
-          })
-        } else {
-          return piece
-        }
-      })
-    )
+    const dispatchObject = {
+      piece: pieceToChange,
+      x: newX,
+      y: newY
+    }
+    dispatch(changePiece(dispatchObject))
   }
 
   const handleSquareClick = (newX, newY, piece) => {
@@ -125,21 +104,22 @@ const GameBoard = () => {
 
     if (!piece && selectedPiece) {
       movePiece(newX, newY, selectedPiece)
-      console.log(newX, newY, selectedPiece)
     }
   }
 
-  const handleDrop = (id, x, y) => {
-    let pieceToMove
-
-    pieces.forEach(piece => {
-      if (piece.id === id) {
-        pieceToMove = piece
-      }
-    })
+  const handleDrop = (pieceToMove, x, y) => {
     if (pieceToMove) {
       changePiecePosition(x, y, pieceToMove)
-      console.log(x, y, pieceToMove)
+    }
+  }
+
+  const canDrop = (piece, x, y) => {
+    let canMove
+    if (piece) {
+      canMove = selectCanMove(piece)
+    }
+    if (canMove) {
+      return canMove(x, y, piece)
     }
   }
 
@@ -153,7 +133,7 @@ const GameBoard = () => {
 
     let matchedPiece
 
-    pieces.forEach(piece => {
+    reduxPieces.forEach(piece => {
       if (piece.position.x === x && piece.position.y === y) {
         matchedPiece =
           <Piece
@@ -171,6 +151,8 @@ const GameBoard = () => {
         piece={matchedPiece}
         handleClick={handleSquareClick}
         handleDrop={handleDrop}
+        canDropItem={canDrop}
+
       />
 
     )
